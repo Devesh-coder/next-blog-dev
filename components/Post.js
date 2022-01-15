@@ -15,7 +15,7 @@ export default function Post({ post, user, images }) {
 
 	return (
 		<div className='card'>
-			<img src={imageURL} />
+			<img src={imageURL} alt='' />
 			<div className='post-date'>
 				Posted on {post.attributes.publishedAt.substring(0, 10)}
 			</div>
@@ -27,15 +27,3 @@ export default function Post({ post, user, images }) {
 		</div>
 	)
 }
-
-// export async function getStaticProps({ post }) {
-// 	const res2 = await fetch(`http://localhost:1337/api/users/${post.id}`)
-// 	const userData = await res2.json()
-// 	const user = userData
-
-// 	return {
-// 		props: {
-// 			user,
-// 		},
-// 	}
-// }
