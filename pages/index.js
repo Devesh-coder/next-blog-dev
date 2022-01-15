@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import Post from '../components/Post'
-import Image from '../components/Images'
 
 export default function Home({ posts, users, images }) {
 	return (
@@ -12,10 +11,6 @@ export default function Home({ posts, users, images }) {
 			<div className='posts'>
 				{posts.map((post) => (
 					<Post key={post.id} post={post} users={users} images={images} />
-				))}
-
-				{images.map((image) => (
-					<Image image={image} />
 				))}
 			</div>
 		</div>

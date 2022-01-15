@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from '../components/Images'
 
 export default function Post({ post, user, images }) {
 	let imageURL = ''

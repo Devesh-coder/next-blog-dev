@@ -21,7 +21,9 @@ export default function PostPage({ post }) {
 			</Link>
 			<div className='card card-page'>
 				<h1 className='post-title'>{post.attributes.title}</h1>
-				{/* <div className='post-date'>Posted on {date}</div> */}
+				<div className='post-date'>
+					Posted on {post.attributes.publishedAt.substring(0, 10)}
+				</div>
 				<img src={imageURL} alt='' />
 				<div className='post-body'>
 					<div dangerouslySetInnerHTML={{ __html: htmlContent }}></div>
