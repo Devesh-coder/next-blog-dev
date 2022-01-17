@@ -1,18 +1,21 @@
 import Link from 'next/link'
 import MarkdownIt from 'markdown-it'
+import Image from '../../components/Image'
 
 export default function PostPage({ post }) {
+	// console.log(images)
 	const md = new MarkdownIt()
 	const htmlContent = md.render(post.attributes.content)
+
 	let imageURL = ''
 	if (post.id == 1) {
-		imageURL = 'http://localhost:1337/uploads/blog_Pic1_7860ab4f84.jpg'
+		imageURL = 'http://localhost:1337/uploads/blog_Pic1_945d4ceb18.jpg'
 	} else if (post.id == 2) {
-		imageURL = 'http://localhost:1337/uploads/blog_Pic2_ac00da3099.jpg'
+		imageURL = 'http://localhost:1337/uploads/blog_Pic2_30af4e8c5c.jpg'
 	} else if (post.id == 3) {
-		imageURL = 'http://localhost:1337/uploads/blog_Pic3_b2d1047ddc.jpg'
+		imageURL = 'http://localhost:1337/uploads/blog_Pic3_da71a9605f.jpg'
 	} else if (post.id == 4) {
-		imageURL = 'http://localhost:1337/uploads/blog_Pic4_3dfb932662.jpg'
+		imageURL = 'http://localhost:1337/uploads/blog_Pic4_8e021ed367.jpg'
 	}
 	return (
 		<>
@@ -25,6 +28,7 @@ export default function PostPage({ post }) {
 					Posted on {post.attributes.publishedAt.substring(0, 10)}
 				</div>
 				<img src={imageURL} alt='' />
+				{/* <Image images={images} id={post.id} /> */}
 				<div className='post-body'>
 					<div dangerouslySetInnerHTML={{ __html: htmlContent }}></div>
 				</div>
@@ -41,6 +45,7 @@ export async function getStaticPaths() {
 
 	const paths = posts.map((post) => ({
 		params: { id: post.id.toString() },
+		// params: { slug: post.id.toString() },
 	}))
 
 	return {
@@ -51,8 +56,6 @@ export async function getStaticPaths() {
 
 //Data for each page
 export async function getStaticProps({ params }) {
-	// console.log(id)
-	// const { slug } = params
 	const { id } = params
 
 	const res = await fetch(`http://localhost:1337/api/posts/${id}`)
@@ -65,7 +68,3 @@ export async function getStaticProps({ params }) {
 		},
 	}
 }
-
-// export default function PostPage() {
-// 	return <div>Post</div>
-// }
