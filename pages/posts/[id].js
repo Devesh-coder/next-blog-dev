@@ -1,9 +1,8 @@
 import Link from 'next/link'
 import MarkdownIt from 'markdown-it'
-import Image from '../../components/Image'
 
 export default function PostPage({ post }) {
-	// console.log(images)
+	console.log(post)
 	const md = new MarkdownIt()
 	const htmlContent = md.render(post.attributes.content)
 
@@ -28,7 +27,7 @@ export default function PostPage({ post }) {
 					Posted on {post.attributes.publishedAt.substring(0, 10)}
 				</div>
 				<img src={imageURL} alt='' />
-				{/* <Image images={images} id={post.id} /> */}
+
 				<div className='post-body'>
 					<div dangerouslySetInnerHTML={{ __html: htmlContent }}></div>
 				</div>
@@ -45,7 +44,6 @@ export async function getStaticPaths() {
 
 	const paths = posts.map((post) => ({
 		params: { id: post.id.toString() },
-		// params: { slug: post.id.toString() },
 	}))
 
 	return {

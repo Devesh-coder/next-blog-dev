@@ -1,16 +1,10 @@
-import Head from 'next/head'
 import Post from '../components/Post'
-import PostPage from './posts/[id]'
 
 export default function Home({ posts, images }) {
 	// images.map((image) => <Post key={image.id} image={image} />)
 
 	return (
 		<div>
-			<Head>
-				<title>Create Next App</title>
-			</Head>
-
 			<div className='posts'>
 				{posts.map((post) => (
 					<Post key={post.id} post={post} images={images} />

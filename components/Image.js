@@ -6,5 +6,9 @@ export default function Image({ images, id }) {
 	const entireURL = `http://localhost:1337${img}`
 	console.log(entireURL)
 
-	return <img src={entireURL} alt='' />
+	return (
+		<>
+			<img src={entireURL} alt='' />
+		</>
+	)
 }
